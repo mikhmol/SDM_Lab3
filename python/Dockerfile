@@ -7,8 +7,10 @@ WORKDIR /app
 # Update pip
 RUN pip install --upgrade pip
 
+COPY ./requirements /app/requirements
+
 # Install any needed packages specified in requirements.txt
-RUN pip install fastapi pydantic starlette "uvicorn[standard]" numpy
+RUN pip install -r requirements/backend.in
 
 # Copy the current directory contents into the container at /app
 COPY ./spaceship /app/spaceship
